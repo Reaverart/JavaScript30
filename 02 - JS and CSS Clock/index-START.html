@@ -61,12 +61,48 @@
       background:black;
       position: absolute;
       top:50%;
+      transform-origin: 100% 50%;
+      transform: rotate(90deg);
+      transition: all 0.05 ease-out 0s;
     }
 
   </style>
 
   <script>
+    function getEl(selector) {
+      return document.querySelector(selector);
+    }
+    function timeToDegrees(time) {
+      return ((time / 60 * 360) + 90);
+    }
+    function rotate(el, degrees) {
+      el.style.transitionDuration = '0';
+      if (degrees) {
+        el.style.transitionDuration = '0.05';
+      }
+      return el.style.transform = `rotate(${degrees}deg)`;
+    }
 
+    const secondHand = getEl('.second-hand');
+    const minHand = getEl('.min-hand');
+    const hourHand = getEl('.hour-hand');
+
+    function setDate() {
+      const now = new Date();
+
+      const seconds = now.getSeconds();
+      const secondsDegrees = timeToDegrees(seconds);
+      const mins = now.getMinutes();
+      const minsDegrees = timeToDegrees(mins);
+      const hours = now.getHours();
+      const hoursDegrees = timeToDegrees(hours);
+
+      rotate(secondHand, secondsDegrees);
+      rotate(minHand, minsDegrees);
+      rotate(hourHand, hoursDegrees);
+    }
+
+    setInterval(setDate, 1000);
 
   </script>
 </body>
