@@ -18,28 +18,63 @@
     }
 
     // Regular
+    console.log('Yo!');
 
     // Interpolated
+    console.log('Yo, %s!', '💩');
 
     // Styled
+    console.log('%cYo, stylish %s!', 'color: green','💩');
 
     // warning!
+    console.warn('Warn!');
 
     // Error :|
+    console.error('Error!');
 
     // Info
+    console.info('Info!');
 
     // Testing
+    // fires only if wrong statement given
+    console.assert(1 === 2, 'Thats wrong!');
 
     // clearing
+    console.clear();
 
     // Viewing DOM Elements
+    const p = document.querySelector('p');
+    console.log(p);
+    console.dir(p);
 
     // Grouping together
+    console.clear();
+    dogs.forEach(dog => {
+      // console.group(dog.name);
+      // this will display group collapsed in console
+      console.groupCollapsed(dog.name);
+      console.log(`This is ${dog.name}`);
+      console.log(`${dog.name} is ${dog.age} old`);
+      console.groupEnd(dog.name);
+    });
 
     // counting
+    console.count('Yo!');
+    console.count('Yo!');
+    console.count('Yo!');
+    console.count('Yo!');
+    console.count('Yo!');
 
     // timing
+    console.time('Fetch to my github');
+    fetch('https://api.github.com/users/reaverart')
+      .then(res => res.json())
+      .then(json => {
+        console.timeEnd('Fetch to my github');
+        console.log(json);
+      });
+
+    console.table(dogs);
 
   </script>
 </body>
