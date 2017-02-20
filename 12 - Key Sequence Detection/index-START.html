@@ -7,6 +7,18 @@
 </head>
 <body>
 <script>
+  const secret = 'iddqd';
+  const sequence = [];
+  function keySequence(e) {
+    sequence.push(e.key);
+    if (sequence.length > secret.length) {
+      sequence.shift()
+    }
+    if (sequence.join('') === secret) {
+      cornify_add()
+    }
+  }
+  window.addEventListener('keyup', keySequence)
 </script>
 </body>
 </html>
