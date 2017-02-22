@@ -13,6 +13,13 @@
     const players = ['Wes', 'Sarah', 'Ryan', 'Poppy'];
 
     // and we want to make a copy of it.
+    // thats reference
+    const refPlayers = players;
+    // thats copies
+    const copyPlayers1 = players.slice();
+    const copyPlayers2 = [].concat(players);
+    const copyPlayers3 = [...players];
+    const copyPlayers4 = Array.from(players);
 
     // You might think we can just do something like this:
 
@@ -37,8 +44,17 @@
     // The same thing goes for objects, let's say we have a person object
 
     // with Objects
-
+    const person = {
+      name: 'Artur',
+    };
     // and think we make a copy:
+    // thats reference
+    const refPerson = person;
+    // shallow copy
+    const copyPerson1 = Object.assign({}, person);
+    const copyPerson2 = {...person};
+    // trick to get deep copy
+    const copyPerson3 = JSON.parse(JSON.strinify(person));
 
     // how do we take a copy instead?
 
